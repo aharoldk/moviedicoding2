@@ -30,21 +30,22 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class NowPlayingFragment extends Fragment implements DetailClickListener {
+public class UpcomingFragment extends Fragment implements DetailClickListener{
 
     @BindView(R.id.rvMain) RecyclerView rvMain;
 
     private List<ResultsItem> list = new ArrayList<>();
     private MovieAdapter mAdapter;
 
-    public NowPlayingFragment() {
+    public UpcomingFragment() {
+        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
+        View view = inflater.inflate(R.layout.fragment_upcoming, container, false);
 
         declarate(view);
 
@@ -69,7 +70,7 @@ public class NowPlayingFragment extends Fragment implements DetailClickListener 
     private void parteeeehRetrofit() {
         APIInterface apiInterface = APIClient.getApiClient().create(APIInterface.class);
 
-        Observable<Movie> call = apiInterface.getNowPlaying(BuildConfig.API_KEY, BuildConfig.LANG);
+        Observable<Movie> call = apiInterface.getUpcomingMovie(BuildConfig.API_KEY, BuildConfig.LANG);
 
         call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

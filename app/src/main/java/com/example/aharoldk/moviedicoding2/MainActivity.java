@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,7 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.aharoldk.moviedicoding2.fragment.MainFragment;
 import com.example.aharoldk.moviedicoding2.fragment.NowPlayingFragment;
+import com.example.aharoldk.moviedicoding2.fragment.SearchFragment;
+import com.example.aharoldk.moviedicoding2.fragment.UpcomingFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,13 +39,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        if(savedInstanceState == null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.content, new MainFragment())
+                    .commit();
+        }
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
     }
 
     @Override
@@ -57,15 +62,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
+
+        Fragment fragment = null;
+
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            fragment = new MainFragment();
 
         } else if (id == R.id.nav_search) {
+            fragment = new SearchFragment();
 
         } else if (id == R.id.nav_manage) {
 
+        }
+
+        if(fragment!=null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content, fragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .addToBackStack(null)
+                    .commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -74,39 +91,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-    private class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        private SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch(position) {
-                case 0: return new NowPlayingFragment();
-                case 1: return new NowPlayingFragment();
-
-                default: return new NowPlayingFragment();
-            }
-
-        }
-
-        @Override
-        public int getCount() {
-            return 2;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "NOW PLAYING";
-                case 1:
-                    return "UPCOMING";
-            }
-            return null;
-        }
-
-    }
 }

@@ -2,12 +2,17 @@ package com.example.aharoldk.moviedicoding2.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.aharoldk.moviedicoding2.BuildConfig;
 import com.example.aharoldk.moviedicoding2.R;
@@ -30,21 +35,45 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class NowPlayingFragment extends Fragment implements DetailClickListener {
-
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class SearchFragment extends Fragment implements DetailClickListener, View.OnClickListener {
+    @BindView(R.id.etSearch) EditText etSearch;
+    @BindView(R.id.btnCari) Button btnSearch;
     @BindView(R.id.rvMain) RecyclerView rvMain;
 
     private List<ResultsItem> list = new ArrayList<>();
     private MovieAdapter mAdapter;
 
-    public NowPlayingFragment() {
+    String search;
+
+    public SearchFragment() {
+        // Required empty public constructor
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        search = etSearch.getText().toString();
+        outState.putString("search", search);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            // Restore last state for checked position.
+            search = savedInstanceState.getString("search");
+            parteeeehRetrofit(search);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_now_playing, container, false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         declarate(view);
 
@@ -63,13 +92,38 @@ public class NowPlayingFragment extends Fragment implements DetailClickListener 
 
         mAdapter.setItemClickListener(this);
 
-        parteeeehRetrofit();
+        btnSearch.setOnClickListener(this);
     }
 
-    private void parteeeehRetrofit() {
+    @Override
+    public void onItemDetailClicked(String idMovie) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnCari:
+                checkSearchEditText();
+                break;
+
+        }
+    }
+
+    private void checkSearchEditText() {
+        search = etSearch.getText().toString();
+
+        if(!TextUtils.isEmpty(search)){
+            parteeeehRetrofit(search);
+        } else {
+            Toast.makeText(getContext(), "Please Fill Search", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void parteeeehRetrofit(String search) {
         APIInterface apiInterface = APIClient.getApiClient().create(APIInterface.class);
 
-        Observable<Movie> call = apiInterface.getNowPlaying(BuildConfig.API_KEY, BuildConfig.LANG);
+        Observable<Movie> call = apiInterface.getSearchMovie(BuildConfig.API_KEY, BuildConfig.LANG, search);
 
         call.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -95,10 +149,5 @@ public class NowPlayingFragment extends Fragment implements DetailClickListener 
 
                     }
                 });
-    }
-
-    @Override
-    public void onItemDetailClicked(String idMovie) {
-
     }
 }
