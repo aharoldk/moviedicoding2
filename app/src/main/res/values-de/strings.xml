@@ -25,18 +25,18 @@
     <string name="key_reminder_upcoming">reminder_upcoming</string>
     <string name="key_setting_locale">setting_locale</string>
 
-    <string name="label_daily_reminder">Daily Reminder Notification is now</string>
-    <string name="label_upcoming_reminder">Upcoming Reminder Notification is now</string>
-    <string name="label_activated">activated!</string>
-    <string name="label_deactivated">deactivated!</string>
+    <string name="label_daily_reminder">Die tägliche Erinnerungsbenachrichtigung ist jetzt</string>
+    <string name="label_upcoming_reminder">Die bevorstehende Erinnerungsbenachrichtigung ist jetzt</string>
+    <string name="label_activated">aktiviert!</string>
+    <string name="label_deactivated">deaktiviert!</string>
 
-    <string name="label_daily_reminder_title">Daily Reminder Notification</string>
-    <string name="label_daily_reminder_summary">Turn on/off daily reminder</string>
+    <string name="label_daily_reminder_title">Tägliche Reminder-Benachrichtigung</string>
+    <string name="label_daily_reminder_summary">Tägliche Erinnerung ein- / ausschalten</string>
 
-    <string name="label_upcoming_reminder_title">Upcoming Reminder Notification</string>
-    <string name="label_upcoming_reminder_summary">Turn on/off upcoming reminder</string>
+    <string name="label_upcoming_reminder_title">Kommende Erinnerungsbenachrichtigung</string>
+    <string name="label_upcoming_reminder_summary">Anstehende Erinnerung ein- / ausschalten</string>
 
-    <string name="label_setting_locale_title">Setting Locale</string>
-    <string name="label_setting_locale_summary">Change your phone localization</string>
+    <string name="label_setting_locale_title">Ländereinstellung festlegen</string>
+    <string name="label_setting_locale_summary">Ändern Sie Ihre Telefonlokalisierung</string>
 
 </resources>
