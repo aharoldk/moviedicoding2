@@ -76,6 +76,10 @@ public class MainFragment extends Fragment {
             }
             return null;
         }
+    }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }
