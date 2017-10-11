@@ -1,6 +1,7 @@
 package com.example.aharoldk.moviedicoding2.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aharoldk.moviedicoding2.BuildConfig;
+import com.example.aharoldk.moviedicoding2.DetailActivity;
 import com.example.aharoldk.moviedicoding2.R;
 import com.example.aharoldk.moviedicoding2.adapter.DetailClickListener;
 import com.example.aharoldk.moviedicoding2.adapter.MovieAdapter;
@@ -99,6 +101,9 @@ public class NowPlayingFragment extends Fragment implements DetailClickListener 
 
     @Override
     public void onItemDetailClicked(String idMovie) {
+        Intent intentDetailActivity = new Intent(getActivity(), DetailActivity.class);
+        intentDetailActivity.putExtra(DetailActivity.ID_MOVIE, idMovie);
 
+        startActivity(intentDetailActivity);
     }
 }

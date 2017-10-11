@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public void onBindViewHolder(MovieViewHolder holder, final int position) {
         holder.bind(list.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.btnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (detailClickListener != null) {
@@ -68,6 +69,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         @BindView(R.id.tvTitle) TextView tvTitle;
         @BindView(R.id.tvDesk) TextView tvDesk;
         @BindView(R.id.tvDate) TextView tvDate;
+        @BindView(R.id.btnDetail) Button btnDetail;
+        @BindView(R.id.btnShare) Button btnShare;
 
         public MovieViewHolder(View itemView) {
             super(itemView);

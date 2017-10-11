@@ -1,6 +1,7 @@
 package com.example.aharoldk.moviedicoding2.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.aharoldk.moviedicoding2.BuildConfig;
+import com.example.aharoldk.moviedicoding2.DetailActivity;
 import com.example.aharoldk.moviedicoding2.R;
 import com.example.aharoldk.moviedicoding2.adapter.DetailClickListener;
 import com.example.aharoldk.moviedicoding2.adapter.MovieAdapter;
@@ -97,7 +99,10 @@ public class SearchFragment extends Fragment implements DetailClickListener, Vie
 
     @Override
     public void onItemDetailClicked(String idMovie) {
+        Intent intentDetailActivity = new Intent(getActivity(), DetailActivity.class);
+        intentDetailActivity.putExtra(DetailActivity.ID_MOVIE, idMovie);
 
+        startActivity(intentDetailActivity);
     }
 
     @Override
