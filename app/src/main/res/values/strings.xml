@@ -9,4 +9,15 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="daily_reminder_notification">Daily Reminder Notification</string>
+    <string name="upcoming_reminder_notification">Upcoming Reminder Notification</string>
+    <string name="setting_locale">Setting Locale</string>
+    <string name="change_your_phone_localization">Change your phone localization</string>
+    <string name="search_movie">Search Movie</string>
+    <string name="cari">cari</string>
+    <string name="detail">Detail</string>
+    <string name="share">Share</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="setting">Setting</string>
 </resources>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MovieDicoding2</string>
+    <string name="title_activity_main2">Hauptaktivität</string>
+
+    <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
+    <string name="navigation_drawer_close">Navigationsleiste schließen</string>
+
+    <string name="action_settings">Einstellungen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+    <string name="daily_reminder_notification">Tägliche Reminder-Benachrichtigung</string>
+    <string name="upcoming_reminder_notification">Kommende Erinnerungsbenachrichtigung</string>
+    <string name="setting_locale">Ländereinstellung festlegen</string>
+    <string name="change_your_phone_localization">Ändern Sie Ihre Telefonlokalisierung</string>
+    <string name="search_movie">Film suchen</string>
+    <string name="cari">Suche</string>
+    <string name="detail">Detail</string>
+    <string name="share">Aktie</string>
+    <string name="home">Zuhause</string>
+    <string name="search">Suche</string>
+    <string name="setting">Rahmen</string>
+</resources>

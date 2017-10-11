@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aharoldk.moviedicoding2.R;
-import com.example.aharoldk.moviedicoding2.adapter.DetailClickListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,8 +72,10 @@ public class MainFragment extends Fragment {
                     return "NOW PLAYING";
                 case 1:
                     return "UPCOMING";
+
+                default:
+                    return null;
             }
-            return null;
         }
     }
 
