@@ -107,4 +107,9 @@ public class UpcomingFragment extends Fragment implements DetailClickListener{
 
         startActivity(intentDetailActivity);
     }
+
+    @Override
+    public void onItemDetailShareClicked(String title, String overView, String releaseDate) {
+
+    }
 }

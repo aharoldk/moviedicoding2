@@ -1,5 +1,6 @@
 package com.example.aharoldk.moviedicoding2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.aharoldk.moviedicoding2.fragment.MainFragment;
-import com.example.aharoldk.moviedicoding2.fragment.ManageFragment;
 import com.example.aharoldk.moviedicoding2.fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragment = new SearchFragment();
 
         } else if (id == R.id.nav_manage) {
-            fragment = new ManageFragment();
+            startActivity(new Intent(this, SettingActivity.class));
         }
 
         if(fragment!=null) {

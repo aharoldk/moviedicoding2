@@ -106,4 +106,14 @@ public class NowPlayingFragment extends Fragment implements DetailClickListener 
 
         startActivity(intentDetailActivity);
     }
+
+    @Override
+    public void onItemDetailShareClicked(String title, String overView, String releaseDate) {
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody = ""+title+"\n\n\t\t\t\t"+overView+"\n\nRelease Date : "+releaseDate+"\n";
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check Our Latest Movie in Cinemaks XxX");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share via"));
+    }
 }

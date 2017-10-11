@@ -46,6 +46,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 }
             }
         });
+
+        holder.btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(detailClickListener != null){
+                    detailClickListener.onItemDetailShareClicked(String.valueOf(list.get(position).getTitle()), String.valueOf(list.get(position).getOverview()), String.valueOf(list.get(position).getReleaseDate()));
+                }
+            }
+        });
     }
 
     @Override

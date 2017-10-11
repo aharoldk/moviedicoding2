@@ -106,6 +106,11 @@ public class SearchFragment extends Fragment implements DetailClickListener, Vie
     }
 
     @Override
+    public void onItemDetailShareClicked(String title, String overView, String releaseDate) {
+
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnCari:
